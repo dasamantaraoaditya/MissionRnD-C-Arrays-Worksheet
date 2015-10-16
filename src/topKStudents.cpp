@@ -22,5 +22,5 @@ struct student {
 };
 
 struct student ** topKStudents(struct student *students, int len, int K) {
-	
+	return NULL;
 }

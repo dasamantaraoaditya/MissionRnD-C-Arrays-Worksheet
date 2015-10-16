@@ -15,5 +15,5 @@ NOTES: Don't create new array, try to change the input array.
 
 void * removeArrayDuplicates(int *Arr, int len)
 {
-	
+	return NULL;
 }
