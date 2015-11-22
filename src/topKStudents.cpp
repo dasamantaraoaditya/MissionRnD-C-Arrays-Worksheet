@@ -20,7 +20,37 @@ struct student {
 	char *name;
 	int score;
 };
+struct student ** topKStudents(struct student *students, int len, int k)
+{
+	int i, j, L;
+	struct student temp;
+	temp.name = (char *)malloc(sizeof(char) * 10);
 
-struct student ** topKStudents(struct student *students, int len, int K) {
-	return NULL;
+	if (students == NULL || len < 0 || k<0)
+		return NULL;
+	for (i = 0; i < k - 1; i++)
+	{
+		for (j = 0; j < k - i - 1; j++)
+		{
+			if (students[j].score<students[j + 1].score)
+			{
+				for (L = 0; students[j].name[L] != '\0'; L++)
+					temp.name[L] = students[j].name[L];
+				temp.name[L] = '\0';
+				temp.score = students[j].score;
+
+				for (L = 0; students[j + 1].name[L] != '\0'; L++)
+					students[j].name[L] = students[j + 1].name[L];
+				students[j].name[L] = '\0';
+				students[j].score = students[j + 1].score;
+
+				for (L = 0; temp.name[L] != '\0'; L++)
+					students[j + 1].name[L] = temp.name[L];
+				students[j + 1].name[L] = '\0';
+				students[j + 1].score = temp.score;
+
+			}
+		}
+	}
+
 }
